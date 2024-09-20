@@ -1,0 +1,81 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Hello World Swagger",
+        "description": "This is a hello world swagger to access rest API server ",
+        "license": {
+            "name": "MIT",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Hello World",
+            "description": "API for display message in the system"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "token",
+            "in": "header"
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/hello_world": {
+            "get": {
+                "tags": [
+                    "Hello World"
+                ],
+                "description": "Display hello world message in the system",
+                "parameters": [
+                    {
+                        "name": "Hello World",
+                        "description": "message to display"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Message Recieved Successfully",
+                        "schema": {
+                            "$ref": "#/definitions/HelloWorld"
+                        }
+                    },
+                    "400":{
+                        "description": "Something Went Wrong"
+                    },
+                    "500":{
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "HelloWorld": {
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
